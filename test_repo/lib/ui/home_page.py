@@ -1,6 +1,7 @@
 from re import sub
 from decimal import Decimal
 
+
 # Elements
 def sales_menu(app):
     return app.find_element_by_xpath(xpath="//li[@class='level0 nav-5 parent']")
@@ -12,6 +13,7 @@ def view_all_button(app):
 
 def price_filter(app):
     return app.find_element_by_xpath(xpath="(//span[@class='price'])[1]")
+
 
 def price(app):
     return app.find_element_by_xpath(xpath="//span[@class='price']")
@@ -31,4 +33,3 @@ def sales(params, app, actions_chains):
 
     if Decimal(sub(r'[^\d.]', '', price(app).text)) in range(100, 199):
         return True
-
