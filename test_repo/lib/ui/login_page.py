@@ -71,7 +71,10 @@ def failed_login(params, app):
     :param app:
     :return:
     """
-    url = params['host']
+    if params['host'] is None:
+        url = "http://www.ctqatest.biz/ecom/customer/account/login/"
+    else:
+        url = params['host']
     app.get(url)
     email_textbox(app).send_keys(params["username"])
     pass_textbox(app).send_keys(params["password"])
@@ -89,7 +92,10 @@ def failed_login_validations(params, app):
     :param app:
     :return:
     """
-    url = params['host']
+    if params['host'] is None:
+        url = "http://www.ctqatest.biz/ecom/customer/account/login/"
+    else:
+        url = params['host']
     app.get(url)
     login_button(app).click()
     if failed_username_validation(app) and failed_password_validation(app):
@@ -103,7 +109,10 @@ def search_shirt(params, app):
     :param app:
     :return:
     """
-    url = params['host']
+    if params['host'] is None:
+        url = "http://www.ctqatest.biz/ecom/customer/account/login/"
+    else:
+        url = params['host']
     app.get(url)
     search_bar(app).send_keys("shirt")
     search_button(app).click()

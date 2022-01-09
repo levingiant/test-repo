@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 
 
 def pytest_addoption(parser):
@@ -27,3 +28,8 @@ def app():
     driver.maximize_window()
     return driver
 
+
+@pytest.fixture
+def actions_chains(app):
+    actions = ActionChains(app)
+    return actions
