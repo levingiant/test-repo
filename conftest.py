@@ -21,14 +21,9 @@ def params(request):
     return params
 
 
-@pytest.fixture(autouse=True)
+@pytest.fixture
 def app():
-    options = webdriver.ChromeOptions()
-    options.add_argument("disable-gpu")
-    options.add_argument("no-default-browser-check")
-    options.add_argument("no-first-run")
-    options.add_argument("no-sandbox")
-    options.add_argument("--start-maximized")
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome()
+    driver.maximize_window()
     return driver
 
